@@ -1,0 +1,42 @@
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<div class="row">
+    <div class="col-6">
+        <h1>Edit location</h1>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+        <a href="/add" type="button" class="btn btn-primary align-self-center">+Nouveau</a>
+    </div>
+</div>
+
+{{#each rows}}
+<form class="row g-2 needs-validation" action="/update/{{this.id}}" method="POST" novalidate>
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" value="{{this.name}}" name="name" placeholder="name">
+        <label for="floatingInput">name</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingPassword" value="{{this.design}}" name="design" placeholder="design">
+        <label for="floatingPassword">design</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="floatingInput" value="{{this.jour}}" name="jour" placeholder="nombre de jours" required>
+        <label for="floatingInput">nombre de jours</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="floatingPassword" value="{{this.taux}}" name="taux" placeholder="taux journalier" required>
+        <label for="floatingPassword">taux journalier</label>
+    </div>
+
+    <div class="col-12 d-grid">
+        <button class="btn btn-primary" type="submit">Modifier</button>
+    </div>
+   
+</form>
+ {{/each}}

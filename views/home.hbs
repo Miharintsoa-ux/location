@@ -1,0 +1,49 @@
+{{#if removedUser}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    location successfully removed
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+
+<div class="row">
+    <div class="col-6">
+        <h1>Location</h1>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+        <a href="/add" type="button" class="btn btn-primary align-self-center">+Nouveau</a>
+    </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Numero</th>
+      <th scope="col">Nom locateur</th>
+      <th scope="col">Design</th>
+      <th scope="col">Nombre de jours</th>
+      <th scope="col">Taux journalier</th>
+      <th scope="col">Loyer</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each rows}}
+    <tr>
+      <th scope="row">{{this.id}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.design}}</td>
+      <td>{{this.jour}}</td>
+      <td>{{this.taux}}</td>
+      <td>{{produit this.jour this.taux}}</td>
+      <td>
+        <a href="/edit/{{this.id}}" type="button" class="btn btn-light"><i class="bi bi-pencil"></i></a>
+        <a href="/detail/{{this.id}}" type="button" class="btn btn-light"><i class="bi bi-eye"></i></a>
+        <a href="/{{this.id}}" type="button" class="btn btn-light"><i class="bi bi-trash"></i></a>
+        
+      </td>
+    </tr>
+    {{/each}}
+
+  </tbody>
+</table>
