@@ -28,6 +28,7 @@
     </tr>
   </thead>
   <tbody>
+    {{#if rows}}
     {{#each rows}}
     <tr>
       <th scope="row">{{this.id}}</th>
@@ -54,4 +55,5 @@
       <td colspan="2">somme : {{somme rows}}</td>
     </tr>
   </tfoot>
+  {{/if}}
 </table>
