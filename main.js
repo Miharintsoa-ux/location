@@ -33,6 +33,9 @@ let my_hbs = exphbs.create({
                     max = element.jour*element.taux
             });
             return max
+        },
+        loyer: function(a,b){
+            return a * b
         }
     }
 })
