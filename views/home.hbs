@@ -1,18 +1,18 @@
 {{#if removedUser}}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    location successfully removed
+  location successfully removed
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {{/if}}
 
 
 <div class="row">
-    <div class="col-6">
-        <h1>Location</h1>
-    </div>
-    <div class="col-6 d-flex justify-content-end">
-        <a href="/add" type="button" class="btn btn-primary align-self-center">+Nouveau</a>
-    </div>
+  <div class="col-6">
+    <h1>Location</h1>
+  </div>
+  <div class="col-6 d-flex justify-content-end">
+    <a href="/add" type="button" class="btn btn-primary align-self-center">+Nouveau</a>
+  </div>
 </div>
 
 <table class="table table-striped">
@@ -40,10 +40,18 @@
         <a href="/edit/{{this.id}}" type="button" class="btn btn-light"><i class="bi bi-pencil"></i></a>
         <a href="/detail/{{this.id}}" type="button" class="btn btn-light"><i class="bi bi-eye"></i></a>
         <a href="/{{this.id}}" type="button" class="btn btn-light"><i class="bi bi-trash"></i></a>
-        
+
       </td>
     </tr>
     {{/each}}
 
   </tbody>
+  <tfoot class="table-dark">
+    <tr>
+      <td></td>
+      <td colspan="2">maximal: {{maximal rows}}</td>
+      <td colspan="2">minimal: {{minimal rows}}</td>
+      <td colspan="2">somme : {{somme rows}}</td>
+    </tr>
+  </tfoot>
 </table>
