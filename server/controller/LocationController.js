@@ -69,8 +69,23 @@ exports.create = (req,res) => {
         conn.query('INSERT INTO location SET name = ?, design = ?, jour = ?, taux = ?', [name, design, jour,taux], (err,rows) => {
             conn.release()
 
-            if(!err)
-                res.render("add-form",{alert: "Successfully added"})
+            if(!err){
+                pool.getConnection((err,conn) => {
+                    if(err)
+                        throw err;
+                    console.log("connected ID " + conn.threadId);
+            
+                    conn.query("SELECT * FROM location", (err,rows) => {
+                        conn.release()
+            
+                        if(!err)
+                            res.render("home", {rows, alert: `${name} a bien été ajouté`})
+                        else
+                            console.log("error found")
+                    })
+            
+                });
+            }
             else
                 console.log("error found")
         })
@@ -115,11 +130,11 @@ exports.update = (req,res) => {
                     throw err;
                 console.log("connected ID " + conn.threadId);
         
-                conn.query("SELECT * FROM location WHERE id = ?", [req.params.id], (err,rows) => {
+                conn.query("SELECT * FROM location", (err,rows) => {
                     conn.release()
         
                     if(!err)
-                        res.render("edit-form", {rows, alert: `${name} a bien été modifié`})
+                        res.render("home", {rows, alert: `${name} a bien été modifié`})
                     else
                         console.log("error found")
                 })
